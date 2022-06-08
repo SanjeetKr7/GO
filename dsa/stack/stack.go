@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 type Stack struct {
 	list []int
@@ -13,7 +16,7 @@ func (s *Stack) Push(x int) {
 func (s *Stack) Pop() (int, error) {
 	l := len(s.list)
 	if l == 0 {
-		return -1, fmt.Errorf("No value is present as list length is %w", l)
+		return -1, errors.New("no value is present")
 	}
 	top := s.list[l-1]
 	s.list = s.list[:l-1]
